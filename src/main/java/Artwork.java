@@ -5,13 +5,13 @@ public class Artwork {
 
     private double price;
 
-    private int nft;
+    private String nft;
 
-    public Artwork(String name, String artistName, double price, int nft) {
+    public Artwork(String name, String artistName, double price) {
         this.name = name;
         this.artistName = artistName;
         this.price = price;
-        this.nft =
+        this.nft = createNft();
 
     }
 //    getters and setters
@@ -38,9 +38,15 @@ public class Artwork {
 
      public int getNft(){
         return nft;
+
+     }
+// Creates unique Nft ID
+     private static long idNft= 0;
+     public static synchronized String createNft(){
+        return String.valueOf(idNft++);
      }
 
-  
+    }
 
 
 }

@@ -10,7 +10,7 @@ public class Gallery {
         this.name = name;
         this.artworkForSale = getArtworksCount();
         this.artworks = new ArrayList<Artwork>();
-        this.tillBalance = 0;
+        this.tillBalance = setTillBalance();
 
     }
 //    Methods
@@ -35,6 +35,11 @@ public class Gallery {
         return this.artworks;
     }
 
-    
+    public double increaseTillBalance(double increaseBalance){
+        this.tillBalance + increaseBalance;
+    }
+    public void setTillBalance(double newBalance){
+        this.tillBalance = newBalance;
+    }
 
 }

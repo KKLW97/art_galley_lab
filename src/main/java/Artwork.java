@@ -2,17 +2,16 @@ public class Artwork {
 
     private String name;
     private String artistName;
-
-    private double price;
+    
+    private int price;
 
     private String nft;
 
-    public Artwork(String name, String artistName, double price) {
+    public Artwork(String name, String artistName) {
         this.name = name;
         this.artistName = artistName;
-        this.price = price;
+        this.price = setPrice();
         this.nft = createNft();
-
     }
 //    getters and setters
     public String getName(){
@@ -28,15 +27,15 @@ public class Artwork {
     }
 
 
-    public double getPrice(){
-        return price;
+    public int getPrice(){
+        return this.price;
      }
 
-     public void setPrice(double newPrice){
+     public void setPrice(int newPrice){
          this.price = newPrice;
      }
 
-     public int getNft(){
+     public String getNft(){
         return nft;
 
      }
@@ -47,6 +46,3 @@ public class Artwork {
      }
 
     }
-
-
-}

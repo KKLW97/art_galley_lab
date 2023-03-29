@@ -2,24 +2,33 @@ public class Customer {
     // properties
 
     private String name;
-    private double wallet;
+    private int wallet;
+    private int collectedArtwork;
 
     // constructor
 
     public Customer(String name){
         this.name = name;
-        this.wallet = 0;
+        this.collectedArtwork = 0;
+        this.wallet = setWallet();
     }
 
     public String getName(){
         return this.name;
     }
 
-    public double getWallet(){
+    public int getWallet(){
+        return this.wallet;
+    }
+    public int setWallet( int amount) {
+        this.wallet = amount;
         return this.wallet;
     }
 
-    private ArrayList<Collection> collections;
+    public int getCollectedArtwork(){
+        return this.collectedArtwork;
+    }
+//    private ArrayList<Collection> collections;
 
 
     public void buyArtwork(Gallery gallery){
@@ -28,16 +37,18 @@ public class Customer {
         for (Artwork artwork : gallery.getArtworks()){
             totalArtworkPrice += artwork.getPrice();
             if (totalArtworkPrice <= wallet){
-                gallery.setTillBalance(gallery.increaseTillBalance(totalArtworkPrice));
+                totalArtworkPrice = (Artwork.getPrice() * Customer.getCollectedArtwork());
                 gallery.setArtworkForSale(0);
             }
             
         }
-        this.collectedEggs = totalEggs;
-    }
-
-    public void assignEggsForSale(Farm farm){
-        farm.setEggsForSale(this.collectedEggs - 2);
-        this.collectedEggs = 2;
+        this.collectedArtwork = totalArtworkPrice;
+    }                   // The price amount of artwork sold = +balancebeforesell gallery
+                        // total amount of customer wallet after purchase
+                        // total amount of gallery
+// Assumes customer purchase 2 art pieces
+    public void assignArtworkForPurchase(Gallery gallery){
+        gallery.setArtworkForSale(gallery.getArtworkForSale(-2));
+        this.collectedArtwork = 2;
     }
 }
